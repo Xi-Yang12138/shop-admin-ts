@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://vite.dev/config/
 export default defineConfig({
   base: '/shop-admin-ts/',
-  define:{
+  define: {
     __VUE_OPTIONS_API__: false,
   },
   resolve: {
@@ -19,12 +19,12 @@ export default defineConfig({
     }
   },
 
-  server:{
-    proxy:{
-      '/api':{
-        target:"http://ceshi13.dishait.cn",
-        changeOrigin:true,
-        rewrite:(path: string) => path.replace(/^\/api/,"")
+  server: {
+    proxy: {
+      '/api': {
+        target: "http://ceshi13.dishait.cn",
+        changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/api/, "")
       },
     }
   },
@@ -35,17 +35,39 @@ export default defineConfig({
   ],
 
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          'element-plus': ['element-plus', '@element-plus/icons-vue'],
-          echarts: ['echarts'],
-          vue: ['vue', 'vue-router', 'vuex'],
-          axios: ['axios'],
-          'vueuse': ['@vueuse/core', '@vueuse/integrations'],
-        },
-      },
-    },
+        codeSplitting: {
+          groups: [
+            {
+              name: 'vue',
+              test: /node_modules\/(vue|vue-router|pinia)/
+            },
+            {
+              name: 'element-plus',
+              test: /node_modules\/(element-plus|@element-plus\/icons-vue)/
+            },
+            {
+              name: 'echarts',
+              test: /node_modules\/echarts/
+            },
+            {
+              name: 'axios',
+              test: /node_modules\/axios/
+            },
+            {
+              name: 'vueuse',
+              test: /node_modules\/@vueuse/
+            },
+            {
+              name: 'vendor',
+              test: /node_modules/
+            }
+          ]
+        }
+      }
+    }
   },
+
 
 })
