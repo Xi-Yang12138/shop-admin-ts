@@ -1,20 +1,25 @@
-permissions:
-  contents: write
-  pages: write
-  id-token: write
 name: Deploy
 on:
   push:
     branches: [main]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Fix safe directory
+        run: git config --global --add safe.directory /__w/shop-admin-ts/shop-admin-ts
+
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
+
       - name: Install
         run: npm install
       - name: Build
