@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Fix safe directory
-        run: git config --global --add safe.directory /__w/shop-admin-ts/shop-admin-ts
-
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
@@ -22,8 +19,10 @@ jobs:
 
       - name: Install
         run: npm install
+
       - name: Build
         run: npm run build
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
