@@ -1,1 +1,0 @@
-import{c as e}from"./index-CyhJVw0H.js";function t(){return e.get(`/admin/rule/1`)}function n(t){return e.post(`/admin/rule`,t)}function r(t,n){return e.post(`/admin/rule/${t}`,n)}function i(t,n){return e.post(`/admin/rule/${t}/update_status`,{status:n})}function a(t){return e.post(`/admin/rule/${t}/delete`)}export{i as a,r as i,a as n,t as r,n as t};
