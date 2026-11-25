@@ -143,6 +143,7 @@ onBeforeUnmount(() => {
 }
 
 .left-title {
+    height: 100px;
     font-size: 100px;
     font-weight: bold;
     color: #fff;
