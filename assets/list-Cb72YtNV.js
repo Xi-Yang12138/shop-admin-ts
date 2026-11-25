@@ -1,1 +1,0 @@
-import{O as e,Q as t,c as n}from"./vue-C_iqFPPz.js";import{t as r}from"./ImagePicker-DTXn2Vy8.js";n();var i={__name:`list`,setup(n){let i=(window.innerHeight||document.body.clientHeight)-100-40-40;return(n,a)=>(t(),e(r,{height:i+`px`},null,8,[`height`]))}};export{i as default};
